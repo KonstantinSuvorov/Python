@@ -1,0 +1,319 @@
+# 1. Напишите программу, удаляющую из текста все слова, содержащие 'абв'.
+#  Пример:
+# 'Мы неабв очень любим Питон иабв Джавуабв!'
+# 'Мы очень любим Питон!'
+
+# Вариант 1
+# txt = input('Введите текст через пробел:\n')
+# print(f'Исходный текст: {txt}')
+# find_txt = 'абв'
+# lst = [i for i in txt.split() if find_txt not in i]
+# print(f'Результат: {' '.join(lst)}')
+
+# Вариант 2
+# my_text = 'Мы неабв очень любим Питон иабв Джавуабв!'
+# def del_some_words(my_text):
+#     my_text = list(filter(lambda x: 'абв' not in x, my_text.split()))
+#     return ' '.join(my_text)
+# my_text = del_some_words(my_text)
+# print(my_text)
+
+# Вариант 3 
+# my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'.split()
+# print(' '.join([word for word in my_txt if 'абв' not in word]))
+
+# Вариант 4 
+# my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'
+# string = 'абв'
+# my_txt = my_txt.split()
+# result = []
+# for item in my_txt:
+#     if string not in item:
+#         result.append(item)
+# print(*result)
+
+
+# 2. Создайте программу для игры с конфетами Игрок против Игрока.
+# Условие задачи: На столе лежит 2021 конфета. 
+# Играют два игрока делая ход друг после друга. 
+# Первый ход определяется жеребьёвкой. 
+# За один ход можно забрать не более чем 28 конфет. 
+# Все конфеты оппонента достаются сделавшему последний ход. 
+# Сколько конфет нужно взять первому игроку, 
+# чтобы забрать все конфеты у своего конкурента?
+
+# a) Добавьте игру против бота
+# b) Подумайте как наделить бота ''интеллектом''
+
+# Вариант 1. Сколько конфет нужно взять первому игроку?
+
+# value = int(input('Введите количество конфет на столе: '))
+# num = int(input('Максимальное количество конфет, которое можно взять за один ход: '))
+# n = num + 1
+# k = value % n
+# print()
+# if k == 0: # Выигрывает второй игрок
+#     print('При заданных условиях выигрыш возможен только при ошибке второго игрока') 
+# else:
+#     print('***** СТРАТЕГИЯ ВЫИГРЫША ИГРОКА, ХОДЯЩЕГО ПЕРВЫМ *****' )
+#     print('Первый игрок должен брать количество конфет,')
+#     print('равное остатку от деления числа конфет на столе на')
+#     print('1 + максимальное количество конфет, которое можно брать за один ход')
+#     print()
+#     print(f'Вначале первый игрок должен взять {k} конфет') 
+ 
+ 
+# Вариант 2 Игрок 1 против Игрока 2:
+
+# from random import randint
+
+# def input_dat(name):
+#     x = int(input(f'{name}, введите количество конфет, которое возьмете от 1 до 28: '))
+#     while x < 1 or x > 28:
+#         x = int(input(f'{name}, введите корректное количество конфет: '))
+#     return x
+
+# def p_print(name, k, counter, value):
+#     print(f'Ходил {name}, взял {k}, теперь у него {counter}, на столе осталось {value} конфет.')
+
+# player1 = input('Введите имя первого игрока: ')
+# player2 = input('Введите имя второго игрока: ')
+# value = int(input('Введите количество конфет на столе: '))
+# flag = randint(0,1) # флаг очередности
+# if flag:
+#     print(f'Первый ходит {player1}')
+# else:
+#     print(f'Первый ходит {player2}')
+
+# counter1 = 0 
+# counter2 = 0
+
+# while value > 28:
+#     if flag:
+#         k = input_dat(player1)
+#         counter1 += k
+#         value -= k
+#         flag = False
+#         p_print(player1, k, counter1, value)
+#     else:
+#         k = input_dat(player2)
+#         counter2 += k
+#         value -= k
+#         flag = True
+#         p_print(player2, k, counter2, value)
+
+# if flag:
+#     print(f'Выиграл {player1}, последний ход за ним')
+# else:
+#     print(f'Выиграл {player2}, послежний ход за ним')
+
+
+# Вариант 3 Игрок против бота
+
+# from random import randint
+
+# def input_dat(name):
+#     x = int(input(f'{name}, введите количество конфет, которое возьмете от 1 до 28: '))
+#     while x < 1 or x > 28:
+#         x = int(input(f'{name}, введите корректное количество конфет: '))
+#     return x
+
+# def p_print(name, k, counter, value):
+#     print(f'Ходил {name}, он взял {k}, теперь у него {counter}. Осталось на столе {value} конфет.')
+
+# player1 = input('Введите имя первого игрока: ')
+# player2 = 'Bot'
+# value = int(input('Введите количество конфет на столе: '))
+# flag = randint(0,1) # флаг очередности
+# if flag:
+#     print(f'Первым ходит {player1}')
+# else:
+#     print(f'Первым ходит {player2}')
+
+# counter1 = 0 
+# counter2 = 0
+
+# while value > 28:
+#     if flag:
+#         k = input_dat(player1)
+#         counter1 += k
+#         value -= k
+#         flag = False
+#         p_print(player1, k, counter1, value)
+#     else:
+#         k = randint(1,28)
+#         counter2 += k
+#         value -= k
+#         flag = True
+#         p_print(player2, k, counter2, value)
+
+# if flag:
+#     print(f'Выиграл {player1}, последний ход за ним')
+# else:
+#     print(f'Выиграл {player2}, последний ход за ним')
+
+
+# Вариант 4 Человек против бота с искусственным интеелектом
+# Бот придерживается выигрышной стратегии при игре первым
+
+# from random import randint
+
+# def input_dat(name):
+#     x = int(input(f'{name}, введите количество конфет, которое возьмете от 1 до 28: '))
+#     while x < 1 or x > 28:
+#         x = int(input(f'{name}, введите корректное количество конфет: '))
+#     return x
+
+# def p_print(name, k, counter, value):
+#     print(f'Ходил {name}, он взял {k}, теперь у него {counter}. Осталось на столе {value} конфет.')
+
+# def bot_calc(value):
+#     k = value % 29 # бот берет остаток от деления на 29
+#     if k == 0:
+#         k = 28
+#     return k
+
+# player1 = input('Введите имя игрока-человека: ')
+# player2 = 'Bot'
+# value = int(input('Введите количество конфет на столе: '))
+# flag = randint(0,1)
+# if flag:
+#     print(f'Первым ходит {player1}')
+# else:
+#     print(f'Первым ходит {player2}')
+
+# counter1 = 0 
+# counter2 = 0
+
+# while value > 28:
+#     if flag:
+#         k = input_dat(player1)
+#         counter1 += k
+#         value -= k
+#         flag = False
+#         p_print(player1, k, counter1, value)
+#     else:
+#         k = bot_calc(value)
+#         counter2 += k
+#         value -= k
+#         flag = True
+#         p_print(player2, k, counter2, value)
+       
+# if flag:
+#     print(f'Выиграл {player1}, последний ход за ним')
+# else:
+#     print(f'Выиграл {player2}, последний ход за ним')
+
+
+# 3. Создайте программу для игры в ''Крестики-нолики''.
+
+# print('=' * 3, '  Крестики-нолики ', '=' * 3)
+# print('=' * 4, 'Два игрока X и O', '=' * 4)
+
+# board = list(range(1,10))
+
+# def draw_board(board):
+#     print (' ' * 13)
+#     for i in range(3):
+#         if i !=2:
+#             print (' ', board[0+i*3], '|', board[1+i*3], '|', board[2+i*3], ' ')
+#             print ('-' * 13)
+#         else:
+#             print (' ', board[0+i*3], '|', board[1+i*3], '|', board[2+i*3], ' ')
+#             print (' ' * 13)
+# def take_input(player_token):
+#     valid = False
+#     while not valid:
+#         player_answer = int(input('Куда ставить ' + player_token+'? '))
+#         if (str(board[player_answer-1]) not in 'XO'):
+#             board[player_answer-1] = player_token
+#             valid = True
+        
+# def check_win(board):
+#     win_coord = ((0,1,2),
+#                  (3,4,5),
+#                  (6,7,8),
+#                  (0,3,6),
+#                  (1,4,7),
+#                  (2,5,8),
+#                  (0,4,8),
+#                  (2,4,6))
+#     for each in win_coord:
+#         if board[each[0]] == board[each[1]] == board[each[2]]:
+#             return board[each[0]]
+#     return False
+
+# def main(board):
+#     counter = 0
+#     win = False
+#     while not win:
+#         draw_board(board)
+#         if counter % 2 == 0:
+#             take_input('X')
+#         else:
+#             take_input('O')
+#         counter += 1
+#         if counter > 4:
+#             tmp = check_win(board)
+#             if tmp:
+#                 print (tmp, 'выиграл!')
+#                 win = True
+#                 break
+#         if counter == 9:
+#             print ('Ничья!')
+#             break
+#     draw_board(board)
+
+# main(board)
+
+
+# 4. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+# Входные и выходные данные хранятся в отдельных текстовых файлах.
+# Пример:
+# - входные данные:      aaa**<<<<<AAA<BBBBB-CC+AAAA==++//////...bbbbb
+# - кодированные данные: 3a2*5<3A1<5B1-2C1+4A2=2+6/3.5b
+
+def coding_file(my_text):  
+    str_code = ''
+    count = 1       
+    for i in range(len(my_text)):
+        if i < len(my_text)-1:
+            if my_text[i] == my_text[i + 1]:
+                count += 1
+            else:
+                str_code += str(count) + my_text[i]
+                count = 1
+        else:
+            str_code += str(count) + my_text[i]
+    return str_code
+
+def decoding_file(strc):
+    count = ''
+    result = ''
+    for i in strc:
+        if i.isdigit():
+            count += i
+        else:
+            result += i * int(count)
+            count = ''
+    return result
+
+text = 'aaa**<<<<<AAA<BBBBB-CC+AAAA==++//////...bbbbb'
+
+print(f'Исходный текст: \n{text}')
+with open('decoding.txt', 'w') as data:
+    data.write(text)
+with open('decoding.txt', 'r') as data:
+    my_text = data.read()
+
+strc = coding_file(my_text)
+print(f'Текст после сжатия: \n{strc}')
+with open('coding.txt', 'w') as data:
+    data.write(strc)
+with open('coding.txt', 'r') as data:
+    my_text = data.read()
+
+total = decoding_file(my_text)
+print(f'Восстановленный текст: \n{total}')
+with open('decoding.txt', 'w') as data:
+    data.write(total)
