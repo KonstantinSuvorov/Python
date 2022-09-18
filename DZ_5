@@ -3,12 +3,15 @@
 # 'Мы неабв очень любим Питон иабв Джавуабв!'
 # 'Мы очень любим Питон!'
 
-# Вариант 1
-# txt = input('Введите текст через пробел:\n')
-# print(f'Исходный текст: {txt}')
-# find_txt = 'абв'
-# lst = [i for i in txt.split() if find_txt not in i]
-# print(f'Результат: {' '.join(lst)}')
+# Вариант 1 
+# my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'
+# string = 'абв'
+# my_txt = my_txt.split()
+# result = []
+# for item in my_txt:
+#     if string not in item:
+#         result.append(item)
+# print(*result)
 
 # Вариант 2
 # my_text = 'Мы неабв очень любим Питон иабв Джавуабв!'
@@ -19,19 +22,8 @@
 # print(my_text)
 
 # Вариант 3 
-# my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'.split()
-# print(' '.join([word for word in my_txt if 'абв' not in word]))
-
-# Вариант 4 
 # my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'
-# string = 'абв'
-# my_txt = my_txt.split()
-# result = []
-# for item in my_txt:
-#     if string not in item:
-#         result.append(item)
-# print(*result)
-
+# print(' '.join([word for word in my_txt.split() if 'абв' not in word]))
 
 # 2. Создайте программу для игры с конфетами Игрок против Игрока.
 # Условие задачи: На столе лежит 2021 конфета. 
@@ -105,7 +97,7 @@
 # if flag:
 #     print(f'Выиграл {player1}, последний ход за ним')
 # else:
-#     print(f'Выиграл {player2}, послежний ход за ним')
+#     print(f'Выиграл {player2}, последний ход за ним')
 
 
 # Вариант 3 Игрок против бота
@@ -153,8 +145,8 @@
 #     print(f'Выиграл {player2}, последний ход за ним')
 
 
-# Вариант 4 Человек против бота с искусственным интеелектом
-# Бот придерживается выигрышной стратегии при игре первым
+# Вариант 4 Человек против бота с искусственным интеллектом
+# Бот придерживается выигрышной стратегии
 
 # from random import randint
 
