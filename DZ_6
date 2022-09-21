@@ -1,0 +1,109 @@
+# 6_1. Напишите программу, удаляющую из текста все слова, содержащие 'абв'.
+#  Пример:
+# 'Мы неабв очень любим Питон иабв Джавуабв!'
+# 'Мы очень любим Питон!'
+
+# my_txt = 'Мы неабв очень любим Питон иабв Джавуабв!'
+# print(f'Исходный текст: {my_txt}')
+
+# # Вариант 1 - с циклом for
+# print('Традиционный вариант: ')
+# string = 'абв'
+# my_txt = my_txt.split()
+# result = []
+# for item in my_txt:
+#     if string not in item:
+#         result.append(item)
+# print(*result)
+
+# # Вариант 2 - "lambda" 
+# print('Вариант "lambda": ')
+# print(*filter(lambda x: 'абв' not in x, my_txt))
+
+
+# Задание 6_2. Дана последовательность чисел. 
+# Получить список уникальных элементов заданной последовательности.
+
+# user_list = [1, 2, 3, 5, 1, 5, 3, 10]
+# # Вариант 1 
+# result_list = []
+# for i in user_list:
+#     count = 0
+#     for k in user_list:
+#         if i == k:
+#             count += 1
+#     if count == 1:
+#         result_list.append(i)
+# print('Традиционный вариант')
+# print(f'Для последовательности {user_list},\n список уникальных элементов => {result_list}')
+
+# # Вариант 2 - "lambda"
+# result_list = list(filter(lambda a: user_list.count(a) == 1, user_list))
+# print('Вариант "lambda"')
+# print(f'Для последовательности {user_list},\n список уникальных элементов => {result_list}')
+
+
+
+# Задача 6_3. Найти сумму всех четных элементов массива
+# Пример:
+# Для массива [1, 4, 3, 1, 5, 6, 8, 4, 9, 10] 
+# Сумма четных элементов = 32
+
+# list = [1, 4, 3, 1, 5, 6, 8, 4, 9, 10]
+# # Вариант 1 - традиционный
+# summa = 0
+# for number in list:
+#    if not number % 2:
+#         summa += number
+# print('Традиционный вариант')
+# print(f'Для {list},\n сумма четных => {summa}')
+
+# # Вариант 2 - "lambda"
+# print('Вариант "lambda"')
+# print(f'Для {list},\n сумма четных => {sum([x for x in list if x % 2 == 0])}')
+
+# # # Вариант 3 - "lambda"
+# print(f'Для {list},\n сумма четных => {sum(filter(lambda x: x % 2 == 0, list))}')
+
+
+
+# Задание 6_4. Для натурального n создать словарь индекс-значение, 
+# состоящий из элементов последовательности 3n + 1.
+# Пример:
+# Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
+
+# Вариант 1 -традиционный
+# n = int(input('Введите натуральное число '))
+# print('Традиционный вариант')
+# dict = {}
+# for i in range (1,n+1):
+#     dict[i] = 3*i + 1
+# print(dict)
+
+# # Вариант 2 - "lambda"
+# print('Вариант "lambda"')
+# f = '3*x+1'
+# d = {x: eval(f) for x in range(1, n+1)}
+# print(f'для {n = }: {d}')
+
+
+# Задание 6_5. Найти наибольший элемент в заданном списке 
+
+list = [1, 24, 17, 14, 9, 32, 2]
+print(f'В списке {list} значение максимального элемента')
+# Вариант 1 -традиционный
+def large(arr): 
+    max_ = arr[0]
+    for ele in arr:
+        if ele > max_:
+           max_ = ele
+    return max_ 
+print('Традиционный вариант')
+result = large(list)
+print(result) 
+
+# Вариант 2 - "lambda"
+from functools import reduce
+all_max = reduce(lambda a,b: a if (a > b) else b, list)
+print('Вариант "lambda"')
+print (all_max)
